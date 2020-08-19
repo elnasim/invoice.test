@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../AppProvider";
+
 import "./LoginForm.scss";
 
 export default function LoginForm() {
@@ -19,14 +20,14 @@ export default function LoginForm() {
     };
 
     checkUser();
-  }, [appContext.userData]);
+  }, [appContext.userData, history]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/;
 
-    // if (password.trim().length < 8) return;
-    // if (!reg.test(password)) return;
+    if (password.trim().length < 8) return;
+    if (!reg.test(password)) return;
 
     await getUser();
   };

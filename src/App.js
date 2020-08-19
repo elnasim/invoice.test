@@ -1,47 +1,37 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import AppProvider from "./AppProvider";
+
+import MainLayout from "./layouts/MainLayout";
 import Home from "./views/Home";
 import Terminals from "./views/Terminals";
 import Buyers from "./views/Buyers";
 
 import "./assets/styles/main.scss";
-import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
   return (
     <AppProvider>
       <div className="App">
         <Router>
-          <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/terminals">terminals</Link>
-                </li>
-                <li>
-                  <Link to="/buyers">buyers</Link>
-                </li>
-              </ul>
-            </nav>
-
-            <Switch>
-              <Route path="/terminals">
+          <Switch>
+            <Route path="/terminals">
+              <MainLayout>
                 <Terminals />
-              </Route>
+              </MainLayout>
+            </Route>
 
-              <Route path="/buyers">
+            <Route path="/buyers" layout={MainLayout}>
+              <MainLayout>
                 <Buyers />
-              </Route>
+              </MainLayout>
+            </Route>
 
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </div>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
         </Router>
       </div>
     </AppProvider>
