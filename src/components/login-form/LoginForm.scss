@@ -1,0 +1,24 @@
+.login-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.login-form__label {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.login-form__input-text {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.login-form__button {
+  padding: 14px 20px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 18px;
+}
