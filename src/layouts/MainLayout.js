@@ -12,14 +12,14 @@ export default function MainLayout({ children }) {
   const appContext = useAppContext();
 
   useEffect(() => {
-    console.log('main layout render');
+    console.log("main layout render");
     if (!appContext.userData) history.push("/");
   }, [appContext.userData, history]);
 
   return (
     <div className="main-layout">
       <Sidebar />
-      {children}
+      <div className="layout-body">{children}</div>
     </div>
   );
 }

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../AppProvider";
 
-import "./LoginForm.scss";
-
 export default function LoginForm() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -26,8 +24,8 @@ export default function LoginForm() {
     e.preventDefault();
     const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/;
 
-    if (password.trim().length < 8) return;
-    if (!reg.test(password)) return;
+    // if (password.trim().length < 8) return;
+    // if (!reg.test(password)) return;
 
     await getUser();
   };
@@ -48,21 +46,21 @@ export default function LoginForm() {
   };
 
   return (
-    <form className="login-form" onSubmit={submitHandler}>
-      <label className="login-form__label">
+    <form className="form" onSubmit={submitHandler}>
+      <label className="label">
         <input
           type="text"
-          className="login-form__input-text"
+          className="input-text"
           placeholder="Пользователь гитхаб"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
       </label>
 
-      <label className="login-form__label">
+      <label className="label">
         <input
           type="password"
-          className="login-form__input-text"
+          className="input-text"
           placeholder="Пароль"
           autoComplete="off"
           value={password}
@@ -70,7 +68,7 @@ export default function LoginForm() {
         />
       </label>
 
-      <button className="login-form__button button">
+      <button className="button-form button">
         {loading ? "Загрузка..." : "Войти"}
       </button>
     </form>

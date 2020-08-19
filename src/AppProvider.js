@@ -8,16 +8,35 @@ export const useAppContext = () => {
 
 export default function AppProvider({ children }) {
   const [userData, setUserData] = useState(null);
+  const [terminals, setTerminals] = useState([
+    {
+      id: 1,
+      terminalTitle: "title 1",
+      description: "desc 1",
+    },
+  ]);
 
   const changeUserData = (data) => {
     setUserData(data);
+  };
+
+  const addTerminal = (data) => {
+    setTerminals([...terminals, data]);
+  };
+
+  const removeTerminal = (id) => {
+    console.log(id);
+    // setTerminals([...terminals, data]);
   };
 
   return (
     <AppContext.Provider
       value={{
         userData,
+        terminals,
         changeUserData,
+        addTerminal,
+        removeTerminal
       }}
     >
       {children}
