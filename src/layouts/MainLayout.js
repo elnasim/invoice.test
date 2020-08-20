@@ -6,6 +6,7 @@ import { useAppContext } from "../AppProvider";
 import Sidebar from "../components/sidebar/Sidebar";
 
 import "./MainLayout.scss";
+import ShowSidebarBtn from "../components/show-sidebar-btn/ShowSidebarBtn";
 
 export default function MainLayout({ children }) {
   const history = useHistory();
@@ -13,13 +14,14 @@ export default function MainLayout({ children }) {
 
   useEffect(() => {
     console.log("main layout render");
-    // if (!appContext.userData) history.push("/");
+    if (!appContext.userData) history.push("/");
   }, [appContext.userData, history]);
 
   return (
     <div className="main-layout">
       <Sidebar />
       <div className="layout-body">{children}</div>
+      <ShowSidebarBtn />
     </div>
   );
 }

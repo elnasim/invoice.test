@@ -12,8 +12,13 @@ export default function Sidebar() {
     console.log("render sidebar");
   }, []);
 
+  let className = "sidebar";
+  if (appContext.isShowSidebar) {
+    className += " show";
+  }
+
   return (
-    <div className="sidebar">
+    <div className={className}>
       <img
         src={appContext.userData && appContext.userData.avatar_url}
         className="user-logo"

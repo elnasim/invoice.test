@@ -9,6 +9,7 @@ export const useAppContext = () => {
 export default function AppProvider({ children }) {
   const [userData, setUserData] = useState(null);
   const [terminals, setTerminals] = useState([]);
+  const [isShowSidebar, setIsShowSidebar] = useState(false);
   const [buyers] = useState([
     {
       id: 1,
@@ -129,15 +130,21 @@ export default function AppProvider({ children }) {
     setTerminals(terminals.filter((item) => item.id !== id));
   };
 
+  const changeShowsidebar = () => {
+    setIsShowSidebar(!isShowSidebar);
+  };
+
   return (
     <AppContext.Provider
       value={{
         userData,
         terminals,
         buyers,
+        isShowSidebar,
         changeUserData,
         addTerminal,
         removeTerminal,
+        changeShowsidebar,
       }}
     >
       {children}

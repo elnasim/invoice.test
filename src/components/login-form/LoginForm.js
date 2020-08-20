@@ -76,7 +76,14 @@ export default function LoginForm() {
         {loading ? "Загрузка..." : "Войти"}
       </button>
 
-      {showError && <FormError />}
+      {showError && (
+        <FormError>
+          Поля не должны быть пустыми
+          <br />
+          <br /> Пароль должен содержать хотя бы 1 прописную латинскую букву,
+          хотя бы 1 строчную латинскую букву, хотя бы 1 цифру
+        </FormError>
+      )}
     </form>
   );
 }

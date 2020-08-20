@@ -52,9 +52,9 @@ export default function TerminalsForm() {
         />
       </label>
 
-      {showError && <FormError />}
-
       <button className="button-form button">Добавить</button>
+
+      {showError && <FormError>Поля не должны быть пустыми</FormError>}
     </form>
   );
 }

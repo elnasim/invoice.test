@@ -2,6 +2,6 @@ import React from "react";
 
 import "./FormError.scss";
 
-export default function FormError() {
-  return <div className="form-error">Поля не должны быть пустыми</div>;
+export default function FormError({ children }) {
+  return <div className="form-error">{children}</div>;
 }

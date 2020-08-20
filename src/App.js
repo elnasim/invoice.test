@@ -10,6 +10,7 @@ import Buyers from "./views/Buyers";
 import Buyer from "./views/Buyer";
 
 import "./assets/styles/main.scss";
+import NoMatch from "./views/NoMatch";
 
 function App() {
   return (
@@ -35,8 +36,12 @@ function App() {
               </MainLayout>
             </Route>
 
-            <Route path="/">
+            <Route path="/" exact>
               <Home />
+            </Route>
+
+            <Route path="*">
+              <NoMatch />
             </Route>
           </Switch>
         </Router>
