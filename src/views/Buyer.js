@@ -15,21 +15,27 @@ export default function Buyer() {
     setBuyer(buyer);
   }, [buyers, urlParams.id]);
 
-  if (!buyer) return null;
-
   return (
     <div className="buyer-page">
       <Link to="/buyers">Назад</Link>
       <br />
       <br />
-      <div className="buyer-page__item">Имя: {buyer.name}</div>
-      <div className="buyer-page__item">Средний чек: {buyer.averageCheck}</div>
-      <div className="buyer-page__item">
-        Количество покупок: {buyer.numberOfPurchases}
-      </div>
-      <div className="buyer-page__item">
-        Общая выручка: {buyer.totalRevenues}
-      </div>
+      {buyer ? (
+        <div>
+          <div className="buyer-page__item">Имя: {buyer.name}</div>
+          <div className="buyer-page__item">
+            Средний чек: {buyer.averageCheck}
+          </div>
+          <div className="buyer-page__item">
+            Количество покупок: {buyer.numberOfPurchases}
+          </div>
+          <div className="buyer-page__item">
+            Общая выручка: {buyer.totalRevenues}
+          </div>
+        </div>
+      ) : (
+        <div>Пользователя с таким id не найдено</div>
+      )}
     </div>
   );
 }
