@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useAppContext } from "../../AppProvider";
@@ -7,6 +7,10 @@ import "./Sidebar.scss";
 
 export default function Sidebar() {
   const appContext = useAppContext();
+
+  useEffect(() => {
+    console.log("render sidebar");
+  }, []);
 
   return (
     <div className="sidebar">
@@ -25,6 +29,8 @@ export default function Sidebar() {
           buyers
         </Link>
       </nav>
+
+      <footer className="footer">Copyright © 2020 </footer>
     </div>
   );
 }

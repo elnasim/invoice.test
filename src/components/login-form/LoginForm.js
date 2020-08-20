@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../AppProvider";
+import FormError from "../form-error/FormError";
 
 export default function LoginForm() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const appContext = useAppContext();
   const history = useHistory();
@@ -24,10 +26,12 @@ export default function LoginForm() {
     e.preventDefault();
     const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/;
 
-    // if (password.trim().length < 8) return;
-    // if (!reg.test(password)) return;
+    if (password.trim().length < 8 || !reg.test(password)) {
+      setShowError(true);
+      return;
+    }
 
-    await getUser();
+    getUser();
   };
 
   const getUser = async () => {
@@ -71,6 +75,8 @@ export default function LoginForm() {
       <button className="button-form button">
         {loading ? "Загрузка..." : "Войти"}
       </button>
+
+      {showError && <FormError />}
     </form>
   );
 }

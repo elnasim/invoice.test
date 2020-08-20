@@ -7,6 +7,7 @@ import MainLayout from "./layouts/MainLayout";
 import Home from "./views/Home";
 import Terminals from "./views/Terminals";
 import Buyers from "./views/Buyers";
+import Buyer from "./views/Buyer";
 
 import "./assets/styles/main.scss";
 
@@ -22,7 +23,13 @@ function App() {
               </MainLayout>
             </Route>
 
-            <Route path="/buyers" layout={MainLayout}>
+            <Route path="/buyers/:id">
+              <MainLayout>
+                <Buyer />
+              </MainLayout>
+            </Route>
+
+            <Route path="/buyers">
               <MainLayout>
                 <Buyers />
               </MainLayout>

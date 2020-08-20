@@ -1,0 +1,9 @@
+.select-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  select {
+    margin-left: 15px;
+    display: inline-block;
+  }
+}

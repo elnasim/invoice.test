@@ -13,7 +13,7 @@ export default function MainLayout({ children }) {
 
   useEffect(() => {
     console.log("main layout render");
-    if (!appContext.userData) history.push("/");
+    // if (!appContext.userData) history.push("/");
   }, [appContext.userData, history]);
 
   return (

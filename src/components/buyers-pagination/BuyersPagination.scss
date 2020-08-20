@@ -1,0 +1,12 @@
+.pagination {
+  margin-top: 20px;
+  &__item {
+    background-color: orangered;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    margin-right: 5px;
+    text-decoration: none;
+    border: none;
+  }
+}

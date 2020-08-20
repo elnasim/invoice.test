@@ -1,25 +1,33 @@
 import React, { useState } from "react";
 import { useAppContext } from "../../AppProvider";
+import FormError from "../form-error/FormError";
 
 export default function TerminalsForm() {
   const [terminalTitle, setTerminalTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [showError, setShowError] = useState(false);
 
   const appContext = useAppContext();
 
   const submitHandler = (e) => {
     e.preventDefault();
 
+    if (!terminalTitle.trim() || !description.trim()) {
+      setShowError(true);
+      return;
+    }
+
     const id = Date.now();
 
     appContext.addTerminal({
       id,
-      terminalTitle,
-      description,
+      terminalTitle: terminalTitle.trim(),
+      description: description.trim(),
     });
 
     setTerminalTitle("");
     setDescription("");
+    setShowError(false);
   };
 
   return (
@@ -43,6 +51,8 @@ export default function TerminalsForm() {
           onChange={(e) => setDescription(e.target.value)}
         />
       </label>
+
+      {showError && <FormError />}
 
       <button className="button-form button">Добавить</button>
     </form>
